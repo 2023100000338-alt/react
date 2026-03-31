@@ -9,7 +9,7 @@ const [price,setPrice]=useState("")
 
 const loadProducts = async()=>{
 
-const res = await axios.get("http://localhost:8080/api/products")
+const res = await axios.get("https://reactbackend-production-006c.up.railway.app/")
 setProducts(res.data)
 
 }
@@ -20,7 +20,7 @@ loadProducts()
 
 const addProduct = async()=>{
 
-await axios.post("http://localhost:8080/api/products",{
+await axios.post("https://reactbackend-production-006c.up.railway.app/",{
 name,
 price
 })
