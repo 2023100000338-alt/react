@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Login(){
 
@@ -52,7 +53,9 @@ onChange={(e)=>setPassword(e.target.value)}
 
 <br/>
 
-<a href="/register">Create Account</a>
+
+
+<Link to="/register">Create Account</Link>
 
 </div>
 
