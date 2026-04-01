@@ -1,62 +1,82 @@
 import { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom"; // Added Link import
 
-function Register(){
+function Register() {
+  const navigate = useNavigate();
 
-const navigate = useNavigate()
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState(""); // New state for confirmation
 
-const [name,setName]=useState("")
-const [email,setEmail]=useState("")
-const [password,setPassword]=useState("")
+  const handleRegister = async (e) => {
+    e.preventDefault();
 
-const handleRegister = async(e)=>{
+    // Basic validation check
+    if (password !== confirmPassword) {
+      alert("Passwords do not match!");
+      return;
+    }
 
-e.preventDefault()
+    try {
+      await axios.post("https://reactbackend-production-006c.up.railway.app/api/register", {
+        name,
+        email,
+        password,
+      });
 
-await axios.post("https://reactbackend-production-006c.up.railway.app/api/register",{
-name,
-email,
-password
-})
+      alert("Registration Success");
+      navigate("/");
+    } catch (err) {
+      alert("Registration failed. Try again.");
+    }
+  };
 
-alert("Registration Success")
+  return (
+    <div className="container">
+      <div className="form-card">
+        <h2>Register</h2>
+        <form onSubmit={handleRegister}>
+          <input
+            type="text"
+            placeholder="Name"
+            required
+            onChange={(e) => setName(e.target.value)}
+          />
 
-navigate("/")
+          <input
+            type="email"
+            placeholder="Email"
+            required
+            onChange={(e) => setEmail(e.target.value)}
+          />
 
+          <input
+            type="password"
+            placeholder="Password"
+            required
+            onChange={(e) => setPassword(e.target.value)}
+          />
+
+          <input
+            type="password"
+            placeholder="Confirm Password"
+            required
+            onChange={(e) => setConfirmPassword(e.target.value)}
+          />
+
+          <button type="submit">Register</button>
+        </form>
+
+        <div className="footer-link">
+          <p>
+            Already have an account? <Link to="/">Login here</Link>
+          </p>
+        </div>
+      </div>
+    </div>
+  );
 }
 
-return(
-
-<div className="container">
-
-<h2>Register</h2>
-
-<form onSubmit={handleRegister}>
-
-<input
-placeholder="Name"
-onChange={(e)=>setName(e.target.value)}
-/>
-
-<input
-placeholder="Email"
-onChange={(e)=>setEmail(e.target.value)}
-/>
-
-<input
-placeholder="Password"
-onChange={(e)=>setPassword(e.target.value)}
-/>
-
-<button>Register</button>
-
-</form>
-
-</div>
-
-)
-
-}
-
-export default Register
+export default Register;
