@@ -9,7 +9,7 @@ const [price,setPrice]=useState("")
 
 const loadProducts = async()=>{
 
-const res = await axios.get("https://reactbackend-production-006c.up.railway.app/")
+const res = await axios.get("https://ecomerce-neon-beta.vercel.app/")
 setProducts(res.data)
 
 }
@@ -20,7 +20,7 @@ loadProducts()
 
 const addProduct = async()=>{
 
-await axios.post("https://reactbackend-production-006c.up.railway.app/",{
+await axios.post("https://ecomerce-neon-beta.vercel.app/",{
 name,
 price
 })
