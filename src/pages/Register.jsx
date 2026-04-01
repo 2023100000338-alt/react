@@ -14,7 +14,7 @@ const handleRegister = async(e)=>{
 
 e.preventDefault()
 
-await axios.post("http://localhost:8080/api/register",{
+await axios.post("https://reactbackend-production-006c.up.railway.app/api/register",{
 name,
 email,
 password

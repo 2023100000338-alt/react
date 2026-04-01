@@ -13,7 +13,7 @@ const handleLogin = async(e)=>{
 
 e.preventDefault()
 
-const res = await axios.post("http://localhost:8080/api/login",{
+const res = await axios.post("https://reactbackend-production-006c.up.railway.app/api/login",{
 email,
 password
 })
