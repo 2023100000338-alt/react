@@ -40,7 +40,7 @@ function Register() {
     }
 
     try {
-      await axios.post("https://reactbackend-production-006c.up.railway.app/api/register", {
+      await axios.post("https://reactbackend-production-3e4b.up.railway.app/api/register", {
         name: formData.name,
         email: formData.email,
         password: formData.password,

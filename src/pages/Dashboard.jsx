@@ -11,7 +11,7 @@ function Dashboard() {
 
   const loadProducts = async () => {
     try {
-      const res = await axios.get("https://reactbackend-production-006c.up.railway.app/api/products");
+      const res = await axios.get("https://reactbackend-production-3e4b.up.railway.app/api/products");
       setProducts(res.data);
     } catch (err) {
       console.error("Error loading products", err);
@@ -25,7 +25,7 @@ function Dashboard() {
   const addProduct = async () => {
     if (!name || !price) return alert("Please fill in all fields");
     
-    await axios.post("https://reactbackend-production-006c.up.railway.app/api/products", {
+    await axios.post("https://reactbackend-production-3e4b.up.railway.app/api/products", {
       name,
       price: parseFloat(price)
     });
